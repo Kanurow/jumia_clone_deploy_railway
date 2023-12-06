@@ -28,7 +28,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.Collections;
 
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor

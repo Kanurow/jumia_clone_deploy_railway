@@ -23,7 +23,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/api/users")
 @RequiredArgsConstructor
@@ -71,7 +71,7 @@ public class UserController {
             summary = "Retrieves all vendors"
     )
     @GetMapping("/getVendors")
-    public List<GetVendorsResponse> getAllvendors() {
+    public List<GetVendorsResponse> getAllVendors() {
         return userService.getAllVendors();
     }
 
@@ -95,8 +95,5 @@ public class UserController {
         return userService.updateUserInformation(companyLogo,  profilePicture,  userId, vendorCompany,  territory, mobile, email, username, lastName , firstName);
 
     }
-
-
-
 
 }

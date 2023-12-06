@@ -22,7 +22,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/api/products")
 @RequiredArgsConstructor

@@ -13,12 +13,9 @@ import java.util.Optional;
 public interface UserRepository extends JpaRepository<User, Long> {
 
 
-    Optional<User> findByEmail(String email);
     Optional<User> findByUsernameOrEmail(String username, String email);
 
     List<User> findByIdIn(List<Long> userIds);
-
-//    Optional<User> findByUsername(String username);
 
     Boolean existsByUsername(String username);
 
@@ -26,7 +23,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query(
             nativeQuery = true,
-            value = "select * from jumia.users_table where is_vendor = :isVendor"
+            value = "select * from railway.users_table where is_vendor = :isVendor"
     )
     List<User> findAllByIsVendor(@Param("isVendor") String isVendor);
 
