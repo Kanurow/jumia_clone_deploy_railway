@@ -11,6 +11,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -22,6 +23,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/api/products")
@@ -258,7 +260,6 @@ public class ProductController {
     )
     @GetMapping("/vendor/{userId}")
     public ResponseEntity<List<ProductResponse>> getAllPagedVendorsProducts(
-
             @PathVariable String userId) {
         List<ProductResponse> allProducts = productService.getAllVendorProducts(userId);
         return ResponseEntity.status(HttpStatus.OK).body(allProducts);

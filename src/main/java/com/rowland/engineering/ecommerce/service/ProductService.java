@@ -12,6 +12,7 @@ import jakarta.annotation.PostConstruct;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -94,6 +95,7 @@ public class ProductService {
             product.setUserId(Long.valueOf(userId));
 
             Product savedProduct = productRepository.save(product);
+            logger.info("Product saved: " + savedProduct);
 
             return ResponseEntity.status(HttpStatus.OK).body(savedProduct.getProductName() + " has been created successfully under " +savedProduct.getCategory() + " category" );
         } catch (IOException e) {
@@ -152,7 +154,7 @@ public class ProductService {
         } else {
             cartCheckout.setPaymentStatus(PaymentStatus.FAILED);
         }
-        logger.error("checkoutRequest" + String.valueOf(checkoutRequest));
+        logger.error("checkoutRequest" + checkoutRequest);
 
         List<CartCheckout.CartItem> cartItems = checkoutRequest.getCart().stream()
                 .map(item -> {
@@ -191,6 +193,7 @@ public class ProductService {
 
 
     public List<CartCheckout> getCheckedOutCart(Long userId) {
+        logger.info("Getting checked out cart");
         return cartCheckoutRepository.findByUserId(userId);
     }
 
@@ -198,6 +201,7 @@ public class ProductService {
 
     public List<ProductResponse> getAllProducts() {
         List<Product> products = productRepository.findAll();
+        logger.info("All products" + products);
 
         return products.stream().map(item -> {
             ProductResponse product = new ProductResponse();
@@ -232,6 +236,7 @@ public class ProductService {
     }
 
     public ApiResponse removeFromCart(Long id) {
+        logger.info("Removing product from cart: Product ID - " + id);
         shoppingCartRepository.deleteById(id);
         return new ApiResponse(true, "Item removed from cart");
     }
