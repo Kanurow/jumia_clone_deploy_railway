@@ -71,6 +71,7 @@ public class SecurityConfig {
                         "/products/others",
                         "/products/phonesAndTablets",
                         "/users/getVendors",
+                        "/user/me",
                     "/v3/api-docs",
                         "/actuator/**",
                         "/prometheus/**",
