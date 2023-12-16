@@ -71,6 +71,7 @@ public class SecurityConfig {
                         "*/products/others",
                         "*/products/phonesAndTablets",
                         "*/products/paged/**",
+                        "*/products/view/**",
                         "*/users/getVendors",
                     "/v3/api-docs",
                         "/actuator/**",
